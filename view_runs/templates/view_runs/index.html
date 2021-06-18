@@ -1,0 +1,30 @@
+{% if runs_for_user %}
+    <table style='border: 1px solid black;'>
+        <tr>
+            <th>Date</th>
+            <th>Ship</th>
+            <th>Difficulty</th>
+            <th>Result</th>
+            <th>Scrap</th>
+            <th>Ships Defeated</th>
+            <th>Crew Hired</th>
+            <th>Score</th>
+        </tr>
+        {% for r in runs_for_user %}
+        <tr>
+            <td>{{ r.datetime_shorthand }}</td>
+            <td>{{ r.ship_shorthand }}</td>
+            <td>{{ r.difficulty }}</td>
+            <td>{{ r.result }}</td>
+            <td>{{ r.scrap_collected }}</td>
+            <td>{{ r.ships_defeated }}</td>
+            <td>{{ r.crew_hired }}</td>
+            <td>{{ r.score }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>
+        Something went wrong.
+    </p>
+{% endif %}

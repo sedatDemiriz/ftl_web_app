@@ -1,0 +1,11 @@
+<h1>Announcements</h1>
+
+{% if recent_announcements %}    
+    {% for ann in recent_announcements %}
+    <div>
+        <h3>{{ ann.title }}</h3>
+        <p><span>{{ ann.author }}</span> posted on <span>{{ ann.datetime }}</span></p>
+        <p>{{ ann.content }}</p>
+    </div>
+    {% endfor %}
+{% endif %}
