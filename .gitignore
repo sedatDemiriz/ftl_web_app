@@ -5,7 +5,7 @@
 */migrations
 
 # Ignore config with secret key
-ftl_web_app/config.ini
+ftl_web_app/config.py
 
 # Do not commit database
 db.sqlite3
