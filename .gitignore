@@ -1,7 +1,7 @@
 # Ignore pycache for all apps
 */__pycache__
 
-# Ignore migrations for master_db
+# Ignore migrations for all apps
 */migrations
 
 # Ignore config with secret key
