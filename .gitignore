@@ -1,4 +1,18 @@
+# Ignore pycache for all apps
+*/__pycache__
+
+# Ignore migrations for master_db
+*/migrations
+
+# Ignore config with secret key
+ftl_web_app/config.ini
+
+# Do not commit database
 db.sqlite3
+
+# Do not commit design document
 design_doc.md
-env/*
+
+# Do not commit virtualenv folder and launcher script
+env/
 venv

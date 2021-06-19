@@ -85,6 +85,12 @@ class Community_Announcement(m.Model):
     datetime = m.DateTimeField() # date of posting
     content = m.CharField(max_length=300) # how to do markdown?
 
+    def __str__(self):
+        return f"Announcement titled \"{self.title}\" by {self.author} at {self.datetime_shorthand()}"
+
+    def datetime_shorthand(self):
+        return str(self.datetime).split('+')[0]
+
 class Community_Guide(m.Model):
     title = m.CharField(max_length=50) # title for guide
     author = m.CharField(max_length=50) # from registered users

@@ -7,7 +7,7 @@ from master_db.models import Community_Announcement as CA
 #     return HttpResponse('Hello world.')
 
 def index(request):
-    recent_announcements = CA.objects.all().order_by('datetime').reverse()[:5]
+    recent_announcements = CA.objects.all().order_by('-datetime')[:5]
     template = loader.get_template('announcements/index.html')
     context = {
         'recent_announcements': recent_announcements,
