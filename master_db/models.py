@@ -4,9 +4,10 @@ from django.db import models as m
 class FTL_Ship(m.Model):
 
     UNKNOWN_SHIP = 'Unknown Ship'
-
+    UNKNOWN_SHIP_NAME = 'Unknown Ship Name'
+    
     designation = m.CharField(max_length=20, default=UNKNOWN_SHIP) # Kestrel A, Fed B, Engi C etc.
-    name = m.CharField(max_length=30) # ship name string, not important
+    name = m.CharField(max_length=30, default=UNKNOWN_SHIP_NAME) # ship name string, not important
     # systems = m.CharField(max_length=30) # list of systems the ship comes with (JSONField)
     # weapons = m.CharField(max_length=500) # make a jsondump when populating this or (JSONField)
 
