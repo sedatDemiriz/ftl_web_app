@@ -1,7 +1,8 @@
 # from django.template import loader
 # from django.shortcuts import render
+# from django.http import HttpResponse
 
-from django.http import HttpResponse
+from rest_framework.response import Response
 from rest_framework import viewsets, permissions
 from master_db.models import User_Submitted_Run as Run
 from master_db.models import FTL_Ship as Ship
@@ -11,9 +12,18 @@ class RunViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows User Submitted Runs to be viewed or edited
     """
+    # permission_classes = [permissions.IsAuthenticated]
     queryset = Run.objects.all()
     serializer_class = RunSerializer
-    # permission_classes = [permissions.IsAuthenticated]
+
+    def list(self, request):
+        # queryset = Run.objects.all()
+        # serializer = RunSerializer(queryset, many=True)
+        # return Response(serializer.data)
+        pass
+
+    def create(self, request):
+        pass
 
 class ShipViewSet(viewsets.ModelViewSet):
     """
