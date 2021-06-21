@@ -20,10 +20,11 @@ from view_runs import views
 
 router = routers.DefaultRouter()
 router.register(r'api-runs', views.RunViewSet)
+router.register(r'api-ships', views.ShipViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('api-runs/', include('rest_framework.urls', namespace='rest_framework')),
+    # path('api-runs/', include('rest_framework.urls', namespace='rest_framework')),
     path('ann/', include('announcements.urls')),
     path('admin/', admin.site.urls),
 ]
