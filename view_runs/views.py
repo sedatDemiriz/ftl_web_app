@@ -7,7 +7,7 @@ from view_runs.serializers import RunSerializer
 
 class RunViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    API endpoint that allows User Submitted Runs to be viewed or edited
+    API endpoint that allows User Submitted Runs to be viewed
     """
 
     queryset = Run.objects.all()
