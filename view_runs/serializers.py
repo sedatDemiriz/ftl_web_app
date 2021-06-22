@@ -1,8 +1,8 @@
 from master_db.models import User_Submitted_Run as Run
-from master_db.models import FTL_Ship as Ship
+# from master_db.models import FTL_Ship as Ship
 from rest_framework import serializers
 
-class RunSerializer(serializers.HyperlinkedModelSerializer):
+class RunSerializer(serializers.ModelSerializer):
     class Meta:
         model = Run
         fields = [
@@ -18,10 +18,10 @@ class RunSerializer(serializers.HyperlinkedModelSerializer):
             'score',
         ]
 
-class ShipSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Ship
-        fields = [
-            'designation',
-            'name',
-        ]
+# class ShipSerializer(serializers.ModelSer):
+#     class Meta:
+#         model = Ship
+#         fields = [
+#             'designation',
+#             'name',
+#         ]

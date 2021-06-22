@@ -40,26 +40,29 @@ class FTL_System(m.Model):
 # Dynamic Models, additions made from users submitting runs through front-end
 class User_Submitted_Run(m.Model):
 
-    HARD = 'H'
-    NORMAL = 'N'
-    EASY = 'E'
+    HARD = 'Hard'
+    NORMAL = 'Normal'
+    EASY = 'Easy'
     DIFFICULTY_CHOICES = [
-        (HARD, 'Hard'),
-        (NORMAL, 'Normal'),
-        (EASY, 'Easy'),
+        (HARD, HARD),
+        (NORMAL, NORMAL),
+        (EASY, EASY),
     ]
 
-    WIN = 'W'
-    LOSS = 'L'
+    WIN = 'Win'
+    LOSS = 'Loss'
     RESULT_CHOICES = [
-        (WIN, 'Win'),
-        (LOSS, 'Loss'),
+        (WIN, WIN),
+        (LOSS, LOSS),
     ]
+
+    SHIPS_LIST = FTL_Ship.objects.all()
+    SHIP_CHOICES = [(ship.designation, ship.designation) for ship in SHIPS_LIST]
 
     username = m.CharField(max_length=50) # from registered users
-    ship_used = m.ForeignKey(to='FTL_Ship', on_delete=m.CASCADE, null=True) # from ftl_ships
-    difficulty = m.CharField(max_length=1, choices=DIFFICULTY_CHOICES, default=NORMAL) # selected difficulty of the run 
-    result = m.CharField(max_length=1, choices=RESULT_CHOICES, default=LOSS) # win/loss
+    ship_used = m.CharField(max_length=20, choices=SHIP_CHOICES, default=FTL_Ship.UNKNOWN_SHIP) # from ftl_ships
+    difficulty = m.CharField(max_length=6, choices=DIFFICULTY_CHOICES, default=NORMAL) # selected difficulty of the run
+    result = m.CharField(max_length=10, choices=RESULT_CHOICES, default=LOSS) # win/loss
     scrap_collected = m.IntegerField() # total scrap collected, according to FTL
     beacons_explored = m.IntegerField() # unique beacons visited, according to FTL
     ships_defeated = m.IntegerField() # enemy ships killed, according to FTL
@@ -69,13 +72,7 @@ class User_Submitted_Run(m.Model):
     metadata = m.CharField(max_length=50) # json with whole-run info?
     
     def __str__(self):
-        return f"{self.ship_shorthand()} {self.result_longhand()} by {self.username} on {self.datetime_shorthand()}"
-
-    def result_longhand(self):
-        return 'Victory' if self.result else 'Loss'
-
-    def ship_shorthand(self):
-        return str(self.ship_used).split(':')[0]
+        return f"{self.difficulty} {self.ship_used} {self.result} by {self.username} on {self.datetime_shorthand()}"
 
     def datetime_shorthand(self):
         return str(self.datetime).split('.')[0]
