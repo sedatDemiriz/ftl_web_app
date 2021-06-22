@@ -16,15 +16,13 @@ Including another URLconf
 from django.urls import path, include
 from rest_framework import routers
 from django.contrib import admin
-from view_runs.views import RunViewSet #, ShipViewSet
+from view_runs.views import RunViewSet
 
 router = routers.DefaultRouter()
 router.register(r'api-runs', RunViewSet, basename='run')
-# router.register(r'api-ships', ShipViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('api-runs/', include('rest_framework.urls', namespace='rest_framework')),
     path('ann/', include('announcements.urls')),
     path('admin/', admin.site.urls),
 ]
