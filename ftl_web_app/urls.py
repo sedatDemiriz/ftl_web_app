@@ -25,8 +25,9 @@ from view_runs import views
 
 urlpatterns = [
     # path('', include(router.urls)),
-    path('api-runs/', views.get_post_runs),
-    path('api-runs/<str:username>/<str:result>/', views.get_post_runs),
+    path('api-runs/', views.RunList.as_view()),
+    path('api-runs/<int:pk>/', views.RunListDetail.as_view()),
+    # path('api-runs/<int:pk>/', views.get_post_runs),
     path('ann/', include('announcements.urls')),
     path('admin/', admin.site.urls),
 ]
