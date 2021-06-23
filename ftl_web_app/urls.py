@@ -16,18 +16,11 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
-# from rest_framework import routers
-
 from view_runs import views
 
-# router = routers.DefaultRouter()
-# router.register(r'api-runs', RunViewSet, basename='run')
-
 urlpatterns = [
-    # path('', include(router.urls)),
     path('api-runs/', views.RunList.as_view()),
-    path('api-runs/<int:pk>/', views.RunListDetail.as_view()),
-    # path('api-runs/<int:pk>/', views.get_post_runs),
+    # path('api-runs/<int:pk>/', views.RunListDetail.as_view()),
     path('ann/', include('announcements.urls')),
     path('admin/', admin.site.urls),
 ]
