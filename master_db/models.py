@@ -1,4 +1,5 @@
 from django.db import models as m
+from django.contrib.auth.models import User
 
 # Static Models, content shouldn't be changed by users
 class FTL_Ship(m.Model):
@@ -100,3 +101,7 @@ class FTL_Game_Update(m.Model):
     author = m.CharField(max_length=50) # from registered admins?
     datetime = m.DateTimeField() # date of update
     content = m.CharField(max_length=300) # how to do markdown?
+
+class FTL_Bingo_Squares(m.Model):
+    text = m.CharField(max_length=200)
+    author = m.ForeignKey(User, on_delete=m.CASCADE)
