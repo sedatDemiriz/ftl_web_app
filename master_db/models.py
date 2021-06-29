@@ -85,20 +85,20 @@ class Community_Announcement(m.Model):
     content = m.CharField(max_length=300) # how to do markdown?
 
     def __str__(self):
-        return f"Announcement titled \"{self.title}\" by {self.author} at {self.datetime_shorthand()}"
+        return f"Announcement titled \"{self.title}\" by {self.author} at {self.datetime_short()}"
 
-    def datetime_shorthand(self):
+    def datetime_short(self):
         return str(self.datetime).split('+')[0]
 
 class Community_Guide(m.Model):
     title = m.CharField(max_length=50) # title for guide
-    author = m.CharField(max_length=50) # from registered users
+    author = m.ForeignKey(User, on_delete=m.CASCADE) # from registered users
     datetime = m.DateTimeField() # date of posting
     content = m.CharField(max_length=300) # how to do markdown? JSONfield?
 
 class FTL_Game_Update(m.Model):
     title = m.CharField(max_length=50) # title for update
-    author = m.CharField(max_length=50) # from registered admins?
+    author = m.ForeignKey(User, on_delete=m.CASCADE) # from registered admins?
     datetime = m.DateTimeField() # date of update
     content = m.CharField(max_length=300) # how to do markdown?
 
