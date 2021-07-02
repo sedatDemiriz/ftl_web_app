@@ -22,6 +22,7 @@ urlpatterns = [
     path('api-runs/', views.RunList.as_view()),
     # path('api-runs/<int:pk>/', views.RunListDetail.as_view()),
     path('ann/', include('announcements.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 ]
 
