@@ -78,6 +78,15 @@ class User_Submitted_Run(m.Model):
     def datetime_shorthand(self):
         return str(self.datetime).split('.')[0]
 
+class User_Profiles(m.Model):
+    username = m.ForeignKey(User, on_delete=m.CASCADE)
+    best_streak = m.JSONField()
+    current_streak = m.JSONField()
+    ships_tierlist = m.JSONField()
+    weapons_tierlist = m.JSONField()
+    augments_tierlist = m.JSONField()
+    game_modifications = m.CharField(max_length=200)
+
 class Community_Announcement(m.Model):
     title = m.CharField(max_length=50) # title for announcement
     author = m.CharField(max_length=50) # from registered users
